@@ -683,14 +683,13 @@ class BullexAPI(object):  # pylint: disable=too-many-instance-attributes
         return BuyBlitzOption(self)
 
 # ____________________for_______digital____________________
-
     def get_digital_underlying(self):
-        msg = {"name": "get-underlying-list",
-               "version": "2.0",
-               "body": {"type": "digital-option"}
-               }
+        msg = {"name": "digital-option-instruments.get-underlying-list",
+               "version": "3.0",
+               "body": {"filter_suspended": True}
+              }
         self.send_websocket_request(name="sendMessage", msg=msg)
-
+        
     @property
     def get_strike_list(self):
         return Strike_list(self)
